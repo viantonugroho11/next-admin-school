@@ -1,4 +1,3 @@
-// ** MUI Imports
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableRow from '@mui/material/TableRow'
@@ -6,6 +5,7 @@ import TableHead from '@mui/material/TableHead'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
+import Button from '@mui/material/Button'
 
 const createData = (name: string, calories: number, fat: number, carbs: number, protein: number) => {
   return { name, calories, fat, carbs, protein }
@@ -25,11 +25,12 @@ const TableClass = () => {
       <Table sx={{ minWidth: 650 }} aria-label='simple table'>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align='right'>Calories</TableCell>
-            <TableCell align='right'>Fat (g)</TableCell>
+            <TableCell>ID</TableCell>
+            <TableCell align='right'>Name</TableCell>
+            <TableCell align='right'>Jurusan</TableCell>
             <TableCell align='right'>Carbs (g)</TableCell>
             <TableCell align='right'>Protein (g)</TableCell>
+            <TableCell align='right'>Actions</TableCell> {/* Tambahkan kolom Actions */}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,6 +50,12 @@ const TableClass = () => {
               <TableCell align='right'>{row.fat}</TableCell>
               <TableCell align='right'>{row.carbs}</TableCell>
               <TableCell align='right'>{row.protein}</TableCell>
+              <TableCell align='right'>
+                <Button variant='contained' color='primary'>
+                  Click
+                </Button>{' '}
+                {/* Tombol untuk Actions */}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
