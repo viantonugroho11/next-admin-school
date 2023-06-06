@@ -20,7 +20,7 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9)
 ]
 
-const TableClass = () => {
+const TableTeacher = () => {
 
   const router = useRouter()
 
@@ -31,7 +31,11 @@ const TableClass = () => {
           <TableRow>
             <TableCell>ID</TableCell>
             <TableCell align='right'>Name</TableCell>
-            <TableCell align='right'>Jurusan</TableCell>
+            <TableCell align='right'>NIK</TableCell>
+            <TableCell align='right'>Email</TableCell>
+            <TableCell align='right'>Phone</TableCell>
+            <TableCell align='right'>Gender</TableCell>
+            <TableCell align='right'>Status</TableCell>
             <TableCell align='right'>Actions</TableCell> {/* Tambahkan kolom Actions */}
           </TableRow>
         </TableHead>
@@ -50,6 +54,10 @@ const TableClass = () => {
               </TableCell>
               <TableCell align='right'>{row.calories}</TableCell>
               <TableCell align='right'>{row.fat}</TableCell>
+              <TableCell align='right'>Email</TableCell>
+              <TableCell align='right'>Phone</TableCell>
+              <TableCell align='right'>Gender</TableCell>
+              <TableCell align='right'>Status</TableCell>
               <TableCell align='right'>
                 <Button variant='contained' color='primary' onClick={() => router.push('/class/edit/?q=tes')}>
                   Click
@@ -64,4 +72,4 @@ const TableClass = () => {
   )
 }
 
-export default TableClass
+export default TableTeacher

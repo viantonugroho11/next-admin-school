@@ -43,13 +43,11 @@ const navigation = (): VerticalNavItemsType => {
       title: 'Student',
       icon: Login,
       path: '/student',
-      openInNewTab: true
     },
     {
       title: 'Teacher',
       icon: Login,
       path: '/teacher',
-      openInNewTab: true
     },
     {
       title: 'Login',
