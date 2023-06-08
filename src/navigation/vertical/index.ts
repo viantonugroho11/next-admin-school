@@ -50,6 +50,24 @@ const navigation = (): VerticalNavItemsType => {
       path: '/teacher',
     },
     {
+      sectionTitle: 'Management Learning'
+    },
+    {
+      title: 'Mapping Mata Pelajaran',
+      icon: Login,
+      path: '/pages/login',
+    },
+    {
+      title: 'Setting Ujian',
+      icon: Login,
+      path: '/pages/login',
+    },
+    {
+      title: 'Setting Materi',
+      icon: Login,
+      path: '/pages/login',
+    },
+    {
       title: 'Login',
       icon: Login,
       path: '/pages/login',

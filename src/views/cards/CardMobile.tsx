@@ -114,7 +114,7 @@ const CardMobile = () => {
                   <Linkedin />
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                  <GooglePlus />
+                  {/* <GooglePlus /> */} test
                 </MenuItem>
               </Menu>
             </Box>

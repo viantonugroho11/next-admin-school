@@ -20,7 +20,7 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9)
 ]
 
-const TableClass = () => {
+const TableStudent = () => {
 
   const router = useRouter()
 
@@ -31,7 +31,12 @@ const TableClass = () => {
           <TableRow>
             <TableCell>ID</TableCell>
             <TableCell align='right'>Name</TableCell>
-            <TableCell align='right'>Jurusan</TableCell>
+            <TableCell align='right'>NISN</TableCell>
+            <TableCell align='right'>No Telp</TableCell>
+            <TableCell align='right'>Gender</TableCell>
+            <TableCell align='right'>Email</TableCell>
+            <TableCell align='right'>Class</TableCell>
+            <TableCell align='right'>Status</TableCell>
             <TableCell align='right'>Actions</TableCell> {/* Tambahkan kolom Actions */}
           </TableRow>
         </TableHead>
@@ -64,4 +69,4 @@ const TableClass = () => {
   )
 }
 
-export default TableClass
+export default TableStudent
