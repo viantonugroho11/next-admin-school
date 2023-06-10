@@ -17,6 +17,7 @@ import CardActions from '@mui/material/CardActions'
 import FormControl from '@mui/material/FormControl'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
+import Input from '@mui/material/Input'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 
 // ** Third Party Imports
@@ -77,7 +78,7 @@ const FormLayoutsStudent = () => {
 
   return (
     <Card>
-      <CardHeader title='Multi Column with Form Separator' titleTypographyProps={{ variant: 'h6' }} />
+      <CardHeader title='Form Student' titleTypographyProps={{ variant: 'h6' }} />
       <Divider sx={{ margin: 0 }} />
       <form onSubmit={e => e.preventDefault()}>
         <CardContent>
@@ -144,6 +145,8 @@ const FormLayoutsStudent = () => {
             <Grid item xs={12}>
               <Divider sx={{ marginBottom: 0 }} />
             </Grid>
+
+            {/* Personal Info */}
             <Grid item xs={12}>
               <Typography variant='body2' sx={{ fontWeight: 600 }}>
                 2. Personal Info
@@ -157,40 +160,20 @@ const FormLayoutsStudent = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
-                <InputLabel id='form-layouts-separator-select-label'>Country</InputLabel>
+                <InputLabel id='form-layouts-separator-select-label'>Gender</InputLabel>
                 <Select
-                  label='Country'
+                  label='Gender'
                   defaultValue=''
                   id='form-layouts-separator-select'
                   labelId='form-layouts-separator-select-label'
                 >
-                  <MenuItem value='UK'>UK</MenuItem>
-                  <MenuItem value='USA'>USA</MenuItem>
-                  <MenuItem value='Australia'>Australia</MenuItem>
-                  <MenuItem value='Germany'>Germany</MenuItem>
+                  <MenuItem value='male'>Male</MenuItem>
+                  <MenuItem value='female'>Female</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel id='form-layouts-separator-multiple-select-label'>Language</InputLabel>
-                <Select
-                  multiple
-                  value={language}
-                  onChange={handleSelectChange}
-                  id='form-layouts-separator-multiple-select'
-                  labelId='form-layouts-separator-multiple-select-label'
-                  input={<OutlinedInput label='Language' id='select-multiple-language' />}
-                >
-                  <MenuItem value='English'>English</MenuItem>
-                  <MenuItem value='French'>French</MenuItem>
-                  <MenuItem value='Spanish'>Spanish</MenuItem>
-                  <MenuItem value='Portuguese'>Portuguese</MenuItem>
-                  <MenuItem value='Italian'>Italian</MenuItem>
-                  <MenuItem value='German'>German</MenuItem>
-                  <MenuItem value='Arabic'>Arabic</MenuItem>
-                </Select>
-              </FormControl>
+              <TextField fullWidth type='email' label='Email' placeholder='carterleonard@gmail.com' />
             </Grid>
             <Grid item xs={12} sm={6}>
               <DatePicker
@@ -206,67 +189,117 @@ const FormLayoutsStudent = () => {
             <Grid item xs={12} sm={6}>
               <TextField fullWidth label='Phone No.' placeholder='+1-123-456-8790' />
             </Grid>
-            <Grid item xs={12}>
-              <Typography variant='body2' sx={{ fontWeight: 600 }}>
-                2. Personal Info
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='First Name' placeholder='Leonard' />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='Last Name' placeholder='Carter' />
-            </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
-                <InputLabel id='form-layouts-separator-select-label'>Country</InputLabel>
+                <InputLabel id='form-layouts-separator-select-label'>Religion</InputLabel>
                 <Select
-                  label='Country'
+                  label='Religion'
                   defaultValue=''
                   id='form-layouts-separator-select'
                   labelId='form-layouts-separator-select-label'
                 >
-                  <MenuItem value='UK'>UK</MenuItem>
-                  <MenuItem value='USA'>USA</MenuItem>
-                  <MenuItem value='Australia'>Australia</MenuItem>
-                  <MenuItem value='Germany'>Germany</MenuItem>
+                  <MenuItem value='male'>Male</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField fullWidth label='Place of Birth' placeholder='Bekasi City' />
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant='body2' sx={{ fontWeight: 600 }}>
+                3. Address Detail
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <TextField fullWidth minRows={4} multiline label='Address' placeholder='JL Buntu' />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <InputLabel id='form-layouts-separator-select-label'>Province</InputLabel>
+                <Select
+                  label='Province'
+                  defaultValue=''
+                  id='form-layouts-separator-select'
+                  labelId='form-layouts-separator-select-label'
+                >
+                  <MenuItem value='male'>Male</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
-                <InputLabel id='form-layouts-separator-multiple-select-label'>Language</InputLabel>
+                <InputLabel id='form-layouts-separator-select-label'>City</InputLabel>
                 <Select
-                  multiple
-                  value={language}
-                  onChange={handleSelectChange}
-                  id='form-layouts-separator-multiple-select'
-                  labelId='form-layouts-separator-multiple-select-label'
-                  input={<OutlinedInput label='Language' id='select-multiple-language' />}
+                  label='City'
+                  defaultValue=''
+                  id='form-layouts-separator-select'
+                  labelId='form-layouts-separator-select-label'
                 >
-                  <MenuItem value='English'>English</MenuItem>
-                  <MenuItem value='French'>French</MenuItem>
-                  <MenuItem value='Spanish'>Spanish</MenuItem>
-                  <MenuItem value='Portuguese'>Portuguese</MenuItem>
-                  <MenuItem value='Italian'>Italian</MenuItem>
-                  <MenuItem value='German'>German</MenuItem>
-                  <MenuItem value='Arabic'>Arabic</MenuItem>
+                  <MenuItem value='male'>Male</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <DatePicker
-                selected={date}
-                showYearDropdown
-                showMonthDropdown
-                placeholderText='MM-DD-YYYY'
-                customInput={<CustomInput />}
-                id='form-layouts-separator-date'
-                onChange={(date: Date) => setDate(date)}
-              />
+              <FormControl fullWidth>
+                <InputLabel id='form-layouts-separator-select-label'>Sub District</InputLabel>
+                <Select
+                  label='Sub District'
+                  defaultValue=''
+                  id='form-layouts-separator-select'
+                  labelId='form-layouts-separator-select-label'
+                >
+                  <MenuItem value='male'>Male</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField fullWidth label='Phone No.' placeholder='+1-123-456-8790' />
+              <FormControl fullWidth>
+                <InputLabel id='form-layouts-separator-select-label'>Ward</InputLabel>
+                <Select
+                  label='Ward'
+                  defaultValue=''
+                  id='form-layouts-separator-select'
+                  labelId='form-layouts-separator-select-label'
+                >
+                  <MenuItem value='male'>Male</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField fullWidth label='RT' placeholder='01' />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField fullWidth label='RW' placeholder='01' />
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant='body2' sx={{ fontWeight: 600 }}>
+                4. Additional Info
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <FormControl fullWidth>
+                <InputLabel id='form-layouts-separator-select-label'>Blood Group</InputLabel>
+                <Select
+                  label='Province'
+                  defaultValue=''
+                  id='form-layouts-separator-select'
+                  labelId='form-layouts-separator-select-label'
+                >
+                  <MenuItem value='male'>Male</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField fullWidth label='Height' placeholder='150 Cm' />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField fullWidth label='Weight' placeholder='59 Kg' />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <InputLabel htmlFor='file-upload' sx={{ marginBottom: '10px' }}>
+                Upload Photo
+              </InputLabel>
+              <Input id='file-upload' type='file'/>
             </Grid>
           </Grid>
         </CardContent>
