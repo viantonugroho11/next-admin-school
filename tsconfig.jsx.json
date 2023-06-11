@@ -17,7 +17,10 @@
     "skipDefaultLibCheck": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "@helper/*": ["src/helper/*"]
+    }
   },
   "include": [
     "src"

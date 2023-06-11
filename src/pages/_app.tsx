@@ -12,7 +12,7 @@ import { SettingsConsumer, SettingsProvider } from 'src/@core/context/settingsCo
 import { createEmotionCache } from 'src/@core/utils/create-emotion-cache'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import '../../styles/globals.css'
-import { validateAuth } from 'src/helper/authValidation'
+import { validateAuth } from '@helpers/authValidation'
 
 type ExtendedAppProps = AppProps & {
   Component: NextPage
