@@ -21,7 +21,7 @@ const MUITable = () => {
             Teacher List
           </Link>
         </Typography>
-        <Button size='small' variant='contained' sx={{ marginBottom: 7 }} onClick={() => router.push('/class/create')}>
+        <Button size='small' variant='contained' sx={{ marginBottom: 7 }} onClick={() => router.push('/teacher/create')}>
           Create
         </Button>
       </Grid>

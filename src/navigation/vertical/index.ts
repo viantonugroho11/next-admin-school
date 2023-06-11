@@ -53,17 +53,12 @@ const navigation = (): VerticalNavItemsType => {
       sectionTitle: 'Management Learning'
     },
     {
-      title: 'Mapping Mata Pelajaran',
+      title: 'Mata Pelajaran',
       icon: Login,
       path: '/pages/login',
     },
     {
-      title: 'Setting Ujian',
-      icon: Login,
-      path: '/pages/login',
-    },
-    {
-      title: 'Setting Materi',
+      title: 'Ujian',
       icon: Login,
       path: '/pages/login',
     },
@@ -74,44 +69,17 @@ const navigation = (): VerticalNavItemsType => {
       openInNewTab: true
     },
     {
-      title: 'Register',
-      icon: AccountPlusOutline,
-      path: '/pages/register',
-      openInNewTab: true
+      sectionTitle: 'Profil'
     },
     {
-      title: 'Error',
-      icon: AlertCircleOutline,
-      path: '/pages/error',
-      openInNewTab: true
-    },
-    {
-      sectionTitle: 'User Interface'
-    },
-    {
-      title: 'Typography',
+      title: 'Setting',
       icon: FormatLetterCase,
       path: '/typography'
     },
     {
-      title: 'Icons',
-      path: '/icons',
+      title: 'Logout',
+      path: '/pages/login',
       icon: GoogleCirclesExtended
-    },
-    {
-      title: 'Cards',
-      icon: CreditCardOutline,
-      path: '/cards'
-    },
-    {
-      title: 'Tables',
-      icon: Table,
-      path: '/tables'
-    },
-    {
-      icon: CubeOutline,
-      title: 'Form Layouts',
-      path: '/form-layouts'
     }
   ]
 }
