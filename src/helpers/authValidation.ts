@@ -8,7 +8,7 @@ export function validateAuth(): void {
     // Cek jika storelocal jwt-auth kosong dan alamat saat ini bukan halaman login
     if (!localStorage.getItem('jwt-auth') && router.pathname !== 'auth/login') {
       // Redirect ke halaman login
-      router.replace('auth/login')
+      router.push('/auth/login')
     }
   }, [])
 }
