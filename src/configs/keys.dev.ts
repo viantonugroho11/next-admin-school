@@ -8,3 +8,4 @@ module.exports = {
   SESSION_TOKEN_KEY: process.env.SESSION_TOKEN_KEY,
   URL_API_MANAGEMENT: process.env.URL_API_MANAGEMENT
 }
+export {}
