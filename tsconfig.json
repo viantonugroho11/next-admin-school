@@ -27,7 +27,11 @@
       "apexcharts/*": [
         "./node_modules/apexcharts-clevision/*"
       ],
-      "@helpers/*": ["src/helpers/*"]
+      "@helpers/*": ["src/helpers/*"],
+      "@models/*": ["src/models/*"],
+      "@services/*": ["src/services/*"],
+      "@reducers/*": ["src/reducers/*"],
+      "@actions/*": ["src/actions/*"],
     }
   },
   "include": [
