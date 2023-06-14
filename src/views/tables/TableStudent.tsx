@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableRow from '@mui/material/TableRow'
@@ -7,22 +8,28 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import Button from '@mui/material/Button'
 import { useRouter } from 'next/router'
-
-const createData = (name: string, calories: number, fat: number, carbs: number, protein: number) => {
-  return { name, calories, fat, carbs, protein }
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9)
-]
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchStudents } from '@actions/student/actions'
+import { State } from '@reducers/student'
+import { GetStudentsParams } from '@models/student/student'
 
 const TableStudent = () => {
-
   const router = useRouter()
+  const dispatch = useDispatch()
+  const students = useSelector((state: State) => state.students)
+
+  useEffect(() => {
+    const params: GetStudentsParams = {
+      page: 1,
+      pageSize: 10
+    }
+
+    dispatch(fetchStudents(params))
+  }, [dispatch])
+
+  const handleEdit = (id: string) => {
+    router.push(`/class/edit/${id}`)
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -37,13 +44,13 @@ const TableStudent = () => {
             <TableCell align='right'>Email</TableCell>
             <TableCell align='right'>Class</TableCell>
             <TableCell align='right'>Status</TableCell>
-            <TableCell align='right'>Actions</TableCell> {/* Tambahkan kolom Actions */}
+            <TableCell align='right'>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {students?.data.map(row => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{
                 '&:last-of-type td, &:last-of-type th': {
                   border: 0
@@ -51,15 +58,19 @@ const TableStudent = () => {
               }}
             >
               <TableCell component='th' scope='row'>
-                {row.name}
+                {row.id}
               </TableCell>
-              <TableCell align='right'>{row.calories}</TableCell>
-              <TableCell align='right'>{row.fat}</TableCell>
+              <TableCell align='right'>{row.full_name}</TableCell>
+              <TableCell align='right'>{row.nisn}</TableCell>
+              <TableCell align='right'>{row.phone}</TableCell>
+              <TableCell align='right'>{row.gender}</TableCell>
+              <TableCell align='right'>{row.email}</TableCell>
+              <TableCell align='right'>{row.nisn}</TableCell>
+              <TableCell align='right'>{row.status}</TableCell>
               <TableCell align='right'>
-                <Button variant='contained' color='primary' onClick={() => router.push('/class/edit/tes')}>
-                  Click
-                </Button>{' '}
-                {/* Tombol untuk Actions */}
+                <Button variant='contained' color='primary' onClick={() => handleEdit(row.id)}>
+                  Edit
+                </Button>
               </TableCell>
             </TableRow>
           ))}

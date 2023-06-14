@@ -32,6 +32,7 @@
       "@services/*": ["src/services/*"],
       "@reducers/*": ["src/reducers/*"],
       "@actions/*": ["src/actions/*"],
+      "@configs/*": ["src/configs/*"]
     }
   },
   "include": [

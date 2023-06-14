@@ -3,6 +3,8 @@
 import { Dispatch } from 'redux'
 import { getStudents } from './student.action'
 import { Student, StudentsResponse, GetStudentsParams } from '@models/student/student'
+import { ThunkDispatch } from 'redux-thunk'
+import { State } from '@reducers/student'
 
 // Tipe aksi
 export enum ActionTypes {
@@ -31,7 +33,7 @@ export type Action = FetchStudentsRequestAction | FetchStudentsSuccessAction | F
 
 // Aksi Fetch Students
 export const fetchStudents = (params: GetStudentsParams) => {
-  return async (dispatch: Dispatch<Action>) => {
+  return async (dispatch: ThunkDispatch<State, null, Action>) => {
     dispatch({ type: ActionTypes.FETCH_STUDENTS_REQUEST })
 
     try {
