@@ -10,8 +10,25 @@ import Button from '@mui/material/Button'
 // ** Demo Components Imports
 import TableStudent from 'src/views/tables/TableStudent'
 
+import { useDispatch, useSelector } from 'react-redux'
+// import { fetchStudents, Action } from '@actions/student/actions'
+// import { State } from '@reducers/student'
+// import { ThunkAction } from 'redux-thunk'
+// import { GetStudentsParams } from '@models/student/student'
+import { fetchStudents } from '@actions/student/actions'
+import { RootState } from '@reducers/store'
+import { useEffect } from 'react'
+
 const MUITable = () => {
   const router = useRouter()
+
+
+  const dispatch = useDispatch()
+  const students = useSelector((state: RootState) => state.students)
+
+  useEffect(() => {
+    dispatch(fetchStudents())
+  }, [dispatch])
 
   return (
     <Grid container spacing={6}>
@@ -21,7 +38,12 @@ const MUITable = () => {
             Table Student
           </Link>
         </Typography>
-        <Button size='small' variant='contained' sx={{ marginBottom: 7 }} onClick={() => router.push('/student/create')}>
+        <Button
+          size='small'
+          variant='contained'
+          sx={{ marginBottom: 7 }}
+          onClick={() => router.push('/student/create')}
+        >
           Create
         </Button>
       </Grid>

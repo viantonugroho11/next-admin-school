@@ -29,7 +29,6 @@ export interface Student {
 
 export interface StudentsResponse {
   data: Student[]
-  total: number
 }
 
 export interface GetStudentsParams {

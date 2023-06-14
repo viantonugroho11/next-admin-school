@@ -8,27 +8,27 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import Button from '@mui/material/Button'
 import { useRouter } from 'next/router'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchStudents } from '@actions/student/actions'
-import { State } from '@reducers/student'
-import { GetStudentsParams } from '@models/student/student'
+import { RootState } from '@reducers/store'
+import { useSelector } from 'react-redux'
+import { Student } from '@models/student/student'
+
+interface StudentTableProps {
+  students: Student[]
+}
 
 const TableStudent = () => {
+  const students = useSelector((state: RootState) => state.students.students)
   const router = useRouter()
-  const dispatch = useDispatch()
-  const students = useSelector((state: State) => state.students)
-
-  useEffect(() => {
-    const params: GetStudentsParams = {
-      page: 1,
-      pageSize: 10
-    }
-
-    dispatch(fetchStudents(params))
-  }, [dispatch])
 
   const handleEdit = (id: string) => {
-    router.push(`/class/edit/${id}`)
+    // router.push(`/class/edit/${id}`)
+  }
+
+  students.forEach(item => {
+    console.log(item.full_name)
+  })
+  if (students.length === 0) {
+    return <p>Kosong</p>
   }
 
   return (
@@ -48,27 +48,18 @@ const TableStudent = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {students?.data.map(row => (
-            <TableRow
-              key={row.id}
-              sx={{
-                '&:last-of-type td, &:last-of-type th': {
-                  border: 0
-                }
-              }}
-            >
-              <TableCell component='th' scope='row'>
-                {row.id}
-              </TableCell>
-              <TableCell align='right'>{row.full_name}</TableCell>
-              <TableCell align='right'>{row.nisn}</TableCell>
-              <TableCell align='right'>{row.phone}</TableCell>
-              <TableCell align='right'>{row.gender}</TableCell>
-              <TableCell align='right'>{row.email}</TableCell>
-              <TableCell align='right'>{row.nisn}</TableCell>
-              <TableCell align='right'>{row.status}</TableCell>
+          {students.map((student: Student) => (
+            <TableRow key={student.id}>
+              <TableCell align='right'>{student.id}</TableCell>
+              <TableCell align='right'>{student.full_name}</TableCell>
+              <TableCell align='right'>{student.nisn}</TableCell>
+              <TableCell align='right'>{student.phone}</TableCell>
+              <TableCell align='right'>{student.gender}</TableCell>
+              <TableCell align='right'>{student.email}</TableCell>
+              <TableCell align='right'>{student.nisn}</TableCell>
+              <TableCell align='right'>{student.status}</TableCell>
               <TableCell align='right'>
-                <Button variant='contained' color='primary' onClick={() => handleEdit(row.id)}>
+                <Button variant='contained' color='primary' onClick={() => handleEdit(student.id)}>
                   Edit
                 </Button>
               </TableCell>
