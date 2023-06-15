@@ -38,7 +38,7 @@ if (themeConfig.routingLoader) {
 const App = (props: ExtendedAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
-  // validateAuth()
+  validateAuth()
 
   const getLayout = Component.getLayout ?? (page => <UserLayout>{page}</UserLayout>)
 

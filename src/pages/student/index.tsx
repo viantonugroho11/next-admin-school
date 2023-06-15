@@ -9,25 +9,26 @@ import Button from '@mui/material/Button'
 
 // ** Demo Components Imports
 import TableStudent from 'src/views/tables/TableStudent'
-
-import { useDispatch, useSelector } from 'react-redux'
-// import { fetchStudents, Action } from '@actions/student/actions'
-// import { State } from '@reducers/student'
-// import { ThunkAction } from 'redux-thunk'
-// import { GetStudentsParams } from '@models/student/student'
+import { useDispatch } from 'react-redux'
 import { fetchStudents } from '@actions/student/actions'
-import { RootState } from '@reducers/store'
 import { useEffect } from 'react'
 
 const MUITable = () => {
+
   const router = useRouter()
 
-
   const dispatch = useDispatch()
-  const students = useSelector((state: RootState) => state.students)
 
   useEffect(() => {
-    dispatch(fetchStudents())
+    const fetchData = async () => {
+      try {
+        dispatch<any>(fetchStudents())
+      } catch (error) {
+        // Tangani error jika diperlukan
+      }
+    }
+
+    fetchData()
   }, [dispatch])
 
   return (

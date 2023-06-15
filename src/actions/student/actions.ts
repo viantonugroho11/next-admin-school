@@ -57,15 +57,15 @@
 
 // studentActions.ts
 
-import { Dispatch, AnyAction } from 'redux'
+import { AnyAction, Dispatch } from 'redux'
 import { ActionType } from '@reducers/student'
 import axios, { AxiosResponse } from 'axios'
 import { StudentsResponse } from '@models/student/student'
 
 // Fungsi untuk mengambil data student dari API
 export const fetchStudents = () => {
-  return async (dispatch: Dispatch) => {
-    dispatch({ type: ActionType.FETCH_STUDENTS_REQUEST });
+  return async (dispatch: Dispatch) =>{
+    dispatch({ type: ActionType.FETCH_STUDENTS_REQUEST })
 
     try {
       const response: AxiosResponse<StudentsResponse> = await axios.get(
@@ -74,17 +74,52 @@ export const fetchStudents = () => {
       )
       const data = response.data.data
 
-      console.log("datanih",data)
+      console.log('datanih', data)
 
       dispatch({
         type: ActionType.FETCH_STUDENTS_SUCCESS,
-        payload: data,
-      });
+        payload: data
+      })
     } catch (error) {
       dispatch({
         type: ActionType.FETCH_STUDENTS_FAILURE,
-        payload: 'Failed to fetch students',
-      });
+        payload: 'Failed to fetch students'
+      })
     }
-  };
-};
+  }
+}
+
+// import { ThunkAction, ThunkDispatch } from 'redux-thunk'
+// import { AnyAction } from 'redux'
+// import { RootState } from '@reducers/store'
+// import { ActionType } from '@reducers/student'
+// import axios, { AxiosResponse } from 'axios'
+// import { Dispatch } from 'react'
+// import { StudentsResponse } from '@models/student/student'
+
+// export const fetchStudents = (): ThunkAction<void, RootState, null, AnyAction> => {
+//   return async (dispatch: ThunkDispatch<RootState, null, AnyAction>) => {
+//     dispatch({ type: ActionType.FETCH_STUDENTS_REQUEST })
+
+//     try {
+//       const response: AxiosResponse<StudentsResponse> = await axios.get(
+//         'http://go-management-auth-school-production.up.railway.app/v1/apiUser/student/all',
+//         {}
+//       )
+//       const data = response.data.data
+
+//       console.log('datanih', data)
+
+//       dispatch({
+//         type: ActionType.FETCH_STUDENTS_SUCCESS,
+//         payload: data
+//       })
+//     } catch (error) {
+//       dispatch({
+//         type: ActionType.FETCH_STUDENTS_FAILURE,
+//         payload: 'Failed to fetch students'
+//       })
+//     }
+//   }
+// }
+
