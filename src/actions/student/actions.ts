@@ -69,7 +69,7 @@ export const fetchStudents = () => {
 
     try {
       const response: AxiosResponse<StudentsResponse> = await axios.get(
-        'http://go-management-auth-school-production.up.railway.app/v1/apiUser/student/all',
+        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/student/all',
         {}
       )
       const data = response.data.data
