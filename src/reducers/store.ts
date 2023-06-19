@@ -21,10 +21,12 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { studentReducer } from './student';
+import { authReducer } from './auth';
 
 // Gabungkan semua reducer
 const rootReducer = combineReducers({
   students: studentReducer,
+  auth: authReducer
 });
 
 // Definisikan root state
