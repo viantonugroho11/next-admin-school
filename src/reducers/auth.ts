@@ -53,7 +53,10 @@ const initialState: AuthState = {
   isAuth: false
 }
 
-const authReducer: Reducer<AuthState, LoginAction> = (state = initialState, action) => {
+const authReducer: Reducer<AuthState, LoginAction> = (
+  state = initialState,
+  action
+  ) => {
   switch (action.type) {
     case ActionType.LOGIN_REQUEST:
       return {

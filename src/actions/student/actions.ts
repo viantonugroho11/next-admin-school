@@ -8,7 +8,7 @@ import { apiGetWithoutToken } from '@services/api'
 
 // Fungsi untuk mengambil data student dari API
 export const fetchStudents = () => {
-  return async (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch<any>) => {
     dispatch({ type: ActionType.FETCH_STUDENTS_REQUEST })
 
     try {
