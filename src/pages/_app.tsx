@@ -12,7 +12,6 @@ import { SettingsConsumer, SettingsProvider } from 'src/@core/context/settingsCo
 import { createEmotionCache } from 'src/@core/utils/create-emotion-cache'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import '../../styles/globals.css'
-import { validateAuth } from '@helpers/authValidation'
 import { Provider } from 'react-redux'
 import store from '@reducers/store'
 import AuthMiddleware from 'src/middleware'
@@ -39,7 +38,6 @@ if (themeConfig.routingLoader) {
 const App = (props: ExtendedAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
-  // validateAuth()
 
   const getLayout = Component.getLayout ?? (page => <UserLayout>{page}</UserLayout>)
 
