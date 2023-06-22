@@ -14,10 +14,8 @@ const AuthMiddleware = ({ children }: any) => {
       if (!isAuthenticated && router.pathname !== '/auth/login') {
         router.push('/auth/login') // Redirect ke halaman login jika tidak terautentikasi
       }
-    }// else
+    } // else
     // check verify token
-    
-
   }, [isAuthenticated, router])
 
   return children

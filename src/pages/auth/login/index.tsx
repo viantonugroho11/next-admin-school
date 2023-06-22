@@ -70,9 +70,6 @@ const LoginPage = () => {
     email: ''
   })
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
   // ** Hook
   const theme = useTheme()
   const router = useRouter()
@@ -100,8 +97,6 @@ const LoginPage = () => {
       }
 
       await dispatch<any>(authLoginPost(params))
-      // Tambahkan kode lain yang diperlukan setelah login berhasil
-      
       router.push('/')
     } catch (error) {
       console.log('Page Failed to login : ', error)
