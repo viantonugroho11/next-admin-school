@@ -9,6 +9,7 @@ import { AuthResponse, LoginRequest } from "@models/auth/auth"
 import { ActionType } from "@reducers/auth"
 import { AxiosResponse } from "axios"
 import { apiPostWithoutToken } from "@services/api"
+import { useRouter } from "next/router"
 
 export const authLoginPost = (params:LoginRequest) => {
   return async (dispatch: Dispatch<any>) => {
@@ -16,10 +17,11 @@ export const authLoginPost = (params:LoginRequest) => {
 
     try {
       const response: AxiosResponse<AuthResponse> = await apiPostWithoutToken(
-        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/login',
+        'https://go-management-auth-school-production.up.railway.app/v1/apiAuth/auth/login',
         params
       )
       const data = response.data.data
+      console.log(data)
 
       dispatch({
         type: ActionType.LOGIN_SUCCESS,

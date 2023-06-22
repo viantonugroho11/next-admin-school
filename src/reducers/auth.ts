@@ -1,5 +1,6 @@
 import { Reducer } from 'redux'
 import { Auth } from '@models/auth/auth'
+import { Cookies } from 'react-cookie'
 
 // Definisikan tipe data untuk state auth
 interface AuthState {
@@ -52,6 +53,7 @@ const initialState: AuthState = {
   error: null,
   isAuth: false
 }
+const cookies = new Cookies()
 
 const authReducer: Reducer<AuthState, LoginAction> = (
   state = initialState,
@@ -65,6 +67,8 @@ const authReducer: Reducer<AuthState, LoginAction> = (
         error: null
       }
     case ActionType.LOGIN_SUCCESS:
+      localStorage.setItem('token', action.payload.token)
+      cookies.set('token', action.payload.token,{})
       return {
         ...state,
         auth: action.payload,

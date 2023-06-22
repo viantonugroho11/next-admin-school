@@ -31,6 +31,10 @@ export interface StudentsResponse {
   data: Student[]
 }
 
+export interface StudentResponse {
+  data: Student
+}
+
 export interface GetStudentsParams {
   page: number
   pageSize: number
