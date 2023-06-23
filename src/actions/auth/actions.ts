@@ -1,17 +1,15 @@
-
-
-
 // authActions.ts
 // export const authActions
 
-import { Dispatch } from "react"
-import { AuthResponse, LoginRequest } from "@models/auth/auth"
-import { ActionType } from "@reducers/auth"
-import { AxiosResponse } from "axios"
-import { apiPostWithoutToken } from "@services/api"
-import { useRouter } from "next/router"
+import { Dispatch } from 'react'
+import { AuthResponse, LoginRequest } from '@models/auth/auth'
+import { ActionType } from '@reducers/auth'
+import { AxiosResponse } from 'axios'
+import { apiGetWithToken, apiPostWithoutToken } from '@services/api'
 
-export const authLoginPost = (params:LoginRequest) => {
+
+
+export const authLoginPost = (params: LoginRequest) => {
   return async (dispatch: Dispatch<any>) => {
     dispatch({ type: ActionType.LOGIN_REQUEST })
 
@@ -21,7 +19,6 @@ export const authLoginPost = (params:LoginRequest) => {
         params
       )
       const data = response.data.data
-      console.log(data)
 
       dispatch({
         type: ActionType.LOGIN_SUCCESS,
@@ -30,6 +27,30 @@ export const authLoginPost = (params:LoginRequest) => {
     } catch (error) {
       dispatch({
         type: ActionType.LOGIN_FAILURE,
+        payload: 'Failed to login'
+      })
+    }
+  }
+}
+
+export const authVerifyToken = () => {
+  return async (dispatch: Dispatch<any>) => {
+    dispatch({ type: ActionType.VERIFY_JWT_REQUEST })
+
+    try {
+      const response: AxiosResponse<AuthResponse> = await apiGetWithToken(
+        'https://go-management-auth-school-production.up.railway.app/v1/apiAuth/auth/validate',
+        ''
+      )
+      const data = response.data.data
+
+      dispatch({
+        type: ActionType.VERIFY_JWT_SUCCESS,
+        payload: data
+      })
+    } catch (error) {
+      dispatch({
+        type: ActionType.VERIFY_JWT_FAILURE,
         payload: 'Failed to login'
       })
     }

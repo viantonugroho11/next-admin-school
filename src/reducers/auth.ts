@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import { Auth } from '@models/auth/auth'
+import { Auth, ValidateJwt } from '@models/auth/auth'
 import { Cookies } from 'react-cookie'
 
 // Definisikan tipe data untuk state auth
@@ -8,13 +8,17 @@ interface AuthState {
   loading: boolean
   error: string | null
   isAuth: boolean | false
+  jwt: ValidateJwt
 }
 
 enum ActionType {
   LOGIN_REQUEST = 'LOGIN_REQUEST',
   LOGIN_SUCCESS = 'LOGIN_SUCCESS',
   LOGIN_FAILURE = 'LOGIN_FAILURE',
-  LOGIN_SESSION_OUT = 'LOGIN_SESSION_OUT'
+  LOGIN_SESSION_OUT = 'LOGIN_SESSION_OUT',
+  VERIFY_JWT_REQUEST = 'VERIFY_JWT_REQUEST',
+  VERIFY_JWT_SUCCESS = 'VERIFY_JWT_SUCCESS',
+  VERIFY_JWT_FAILURE = 'VERIFY_JWT_FAILURE'
 }
 
 interface LoginRequestAction {
@@ -38,7 +42,29 @@ interface LoginSessionOutAction {
   isAuth: boolean
 }
 
-type LoginAction = LoginRequestAction | LoginSuccessAction | LoginFailureAction | LoginSessionOutAction
+interface VerifyJwtRequestAction {
+  type: ActionType.VERIFY_JWT_REQUEST
+}
+
+interface VerifyJwtSuccessAction {
+  type: ActionType.VERIFY_JWT_SUCCESS
+  payload: ValidateJwt
+}
+
+interface VerifyJwtFailureAction {
+  type: ActionType.VERIFY_JWT_FAILURE
+  payload: string
+  isAuth: boolean
+}
+
+type LoginAction =
+  | LoginRequestAction
+  | LoginSuccessAction
+  | LoginFailureAction
+  | LoginSessionOutAction
+  | VerifyJwtRequestAction
+  | VerifyJwtSuccessAction
+  | VerifyJwtFailureAction
 
 const initialState: AuthState = {
   auth: {
@@ -51,14 +77,21 @@ const initialState: AuthState = {
   },
   loading: false,
   error: null,
-  isAuth: false
+  isAuth: false,
+  jwt: {
+    identityId: '',
+    username: '',
+    fullname: '',
+    email: '',
+    phone: '',
+    permissions: '',
+    isActive: false,
+    expiredAt: ''
+  }
 }
 const cookies = new Cookies()
 
-const authReducer: Reducer<AuthState, LoginAction> = (
-  state = initialState,
-  action
-  ) => {
+const authReducer: Reducer<AuthState, LoginAction> = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOGIN_REQUEST:
       return {
@@ -68,7 +101,7 @@ const authReducer: Reducer<AuthState, LoginAction> = (
       }
     case ActionType.LOGIN_SUCCESS:
       localStorage.setItem('token', action.payload.token)
-      cookies.set('token', action.payload.token,{})
+      cookies.set('token', action.payload.token, {})
       return {
         ...state,
         auth: action.payload,
@@ -104,6 +137,26 @@ const authReducer: Reducer<AuthState, LoginAction> = (
         },
         loading: false,
         error: null,
+        isAuth: false
+      }
+    case ActionType.VERIFY_JWT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+    case ActionType.VERIFY_JWT_SUCCESS:
+      return {
+        ...state,
+        jwt: action.payload,
+        loading: false,
+        error: null
+      }
+    case ActionType.VERIFY_JWT_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
         isAuth: false
       }
     default:

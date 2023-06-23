@@ -6,7 +6,7 @@ const REACT_APP_API_SERVICE = process.env.URL_API;
 const cookies = new Cookies();
 
 const getToken = () => ({
-  auth: cookies.get("da")
+  auth: cookies.get("token")
 });
 
 export const serviceWithToken = (token = getToken()) =>
@@ -14,7 +14,7 @@ export const serviceWithToken = (token = getToken()) =>
     baseURL: REACT_APP_API_SERVICE,
     timeout: 60 * 4 * 1000,
     headers: {
-      Authorization: token.auth,
+      Authorization: 'Bearer '+token.auth,
       'Content-Type': `application/json`
     }
   });

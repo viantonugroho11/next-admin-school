@@ -15,3 +15,18 @@ export interface LoginRequest {
   username: string
   password: string
 }
+
+export interface ValidateJwt{
+  identityId: string
+  username: string
+  fullname: string
+  email: string
+  phone: string
+  permissions: string
+  isActive: boolean
+  expiredAt: string
+}
+
+export interface ValidateJwtResponse {
+  data: ValidateJwt
+}

@@ -2,7 +2,8 @@
 export interface MClass {
   id: string
   name: string
-  grade: string
+  level: string
+  major: string
 }
 
 export interface ClassesResponse {
