@@ -9,10 +9,26 @@ import Button from '@mui/material/Button'
 
 // ** Demo Components Imports
 import TableClass from 'src/views/tables/TableClass'
+import { useDispatch } from 'react-redux'
+import { fetchClasses } from '@actions/class/actions'
+import { useEffect } from 'react'
 
 const MUITable = () => {
   const router = useRouter()
 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        dispatch<any>(fetchClasses())
+      } catch (error) {
+        // Tangani error jika diperlukan
+      }
+    }
+
+    fetchData()
+  }, [dispatch])
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>

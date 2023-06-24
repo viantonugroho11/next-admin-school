@@ -8,6 +8,7 @@ interface ClassState {
   classes: MClass[]
   loading: boolean
   error: string | null
+  class: MClass
 }
 
 // Definisikan action types
@@ -119,7 +120,13 @@ type ClassAction =
 const initialState: ClassState = {
   classes: [],
   loading: false,
-  error: null
+  error: null,
+  class: {
+    id: '',
+    name: '',
+    level: '',
+    major: ''
+  }
 }
 
 // Definisikan reducer class
@@ -153,7 +160,7 @@ const classReducer: Reducer<ClassState, ClassAction> = (state = initialState, ac
       return {
         ...state,
         loading: false,
-        classes: [...state.classes, action.payload]
+        class: action.payload
       }
     case ActionType.FETCH_CLASS_FAILURE:
       return {
@@ -171,7 +178,7 @@ const classReducer: Reducer<ClassState, ClassAction> = (state = initialState, ac
       return {
         ...state,
         loading: false,
-        classes: [...state.classes, action.payload]
+        class: action.payload
       }
     case ActionType.POST_CLASS_FAILURE:
       return {
@@ -189,7 +196,8 @@ const classReducer: Reducer<ClassState, ClassAction> = (state = initialState, ac
       return {
         ...state,
         loading: false,
-        classes: state.classes.map(c => (c.id === action.payload.id ? action.payload : c))
+        classes: state.classes.map(c => (c.id === action.payload.id ? action.payload : c)),
+        class: action.payload
       }
     case ActionType.PUT_CLASS_FAILURE:
       return {
@@ -207,7 +215,8 @@ const classReducer: Reducer<ClassState, ClassAction> = (state = initialState, ac
       return {
         ...state,
         loading: false,
-        classes: state.classes.filter(c => c.id !== action.payload.id)
+        classes: state.classes.filter(c => c.id !== action.payload.id),
+        class: action.payload
       }
     case ActionType.DELETE_CLASS_FAILURE:
       return {

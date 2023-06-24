@@ -1,3 +1,127 @@
-export const fecthClass = () => {
-  
+import { ClassesResponse } from "@models/class/class"
+import { ActionType } from "@reducers/class"
+import { apiGetWithoutToken, apiPostWithoutToken } from "@services/api"
+import { AxiosResponse } from "axios"
+import { Dispatch } from "react"
+
+export const fetchClasses = () => {
+  return async (dispatch:Dispatch<any>) => {
+    dispatch({type: ActionType.FETCH_CLASSES_REQUEST})
+
+    try {
+      const response: AxiosResponse<ClassesResponse> = await apiGetWithoutToken(
+        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/class/all',
+        ''
+      )
+      const data = response.data.data
+
+      dispatch({
+        type: ActionType.FETCH_CLASSES_SUCCESS,
+        payload: data
+      })
+    } catch (error) {
+      dispatch({
+        type: ActionType.FETCH_CLASSES_FAILURE,
+        payload: 'Failed to fetch classes'
+      })
+    }
+  }
 }
+
+export const fetchClass = (id: string) => {
+  return async (dispatch: Dispatch<any>) => {
+    dispatch({ type: ActionType.FETCH_CLASS_REQUEST })
+
+    try {
+      const response: AxiosResponse<ClassesResponse> = await apiGetWithoutToken(
+        `https://go-management-auth-school-production.up.railway.app/v1/apiUser/class/${id}`,
+        ''
+      )
+      const data = response.data.data
+
+      dispatch({
+        type: ActionType.FETCH_CLASS_SUCCESS,
+        payload: data
+      })
+    } catch (error) {
+      dispatch({
+        type: ActionType.FETCH_CLASS_FAILURE,
+        payload: 'Failed to fetch class'
+      })
+    }
+  }
+}
+
+export const postClass = (params: any) => {
+  return async (dispatch: Dispatch<any>) => {
+    dispatch({ type: ActionType.POST_CLASS_REQUEST })
+
+    try {
+      const response: AxiosResponse<ClassesResponse> = await apiPostWithoutToken(
+        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/class',
+        ''
+      )
+      const data = response.data.data
+
+      dispatch({
+        type: ActionType.POST_CLASS_SUCCESS,
+        payload: data
+      })
+    } catch (error) {
+      dispatch({
+        type: ActionType.POST_CLASS_FAILURE,
+        payload: 'Failed to post class'
+      })
+    }
+  }
+}
+
+export const deleteClass = (id: string) => {
+  return async (dispatch: Dispatch<any>) => {
+    dispatch({ type: ActionType.DELETE_CLASS_REQUEST })
+
+    try {
+      const response: AxiosResponse<ClassesResponse> = await apiGetWithoutToken(
+        `https://go-management-auth-school-production.up.railway.app/v1/apiUser/class/${id}`,
+        ''
+      )
+      const data = response.data.data
+
+      dispatch({
+        type: ActionType.DELETE_CLASS_SUCCESS,
+        payload: data
+      })
+    } catch (error) {
+      dispatch({
+        type: ActionType.DELETE_CLASS_FAILURE,
+        payload: 'Failed to delete class'
+      })
+    }
+  }
+}
+
+export const putClass = (id: string, params: any) => {
+  return async (dispatch: Dispatch<any>) => {
+    dispatch({ type: ActionType.PUT_CLASS_REQUEST })
+
+    try {
+      const response: AxiosResponse<ClassesResponse> = await apiGetWithoutToken(
+        `https://go-management-auth-school-production.up.railway.app/v1/apiClass/class/${id}`,
+        ''
+      )
+      const data = response.data.data
+
+      dispatch({
+        type: ActionType.PUT_CLASS_SUCCESS,
+        payload: data
+      })
+    } catch (error) {
+      dispatch({
+        type: ActionType.PUT_CLASS_FAILURE,
+        payload: 'Failed to put class'
+      })
+    }
+  }
+}
+  
+

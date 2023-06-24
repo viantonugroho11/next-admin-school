@@ -21,26 +21,27 @@ const AuthMiddleware = ({ children }: any) => {
       ) {
         router.push('/401') // Redirect ke halaman login jika tidak terautentikasi
       }
-    } else {
-      const fetchData = async () => {
-        try {
-          if (router.pathname !== '/auth/login' && router.pathname !== '/auth/register' && router.pathname !== '/401') {
-            await dispatch<any>(authVerifyToken())
-            if (
-              !isAuthenticated &&
-              router.pathname !== '/auth/login' &&
-              router.pathname !== '/auth/register' &&
-              router.pathname !== '/401'
-            ) {
-              router.push('/401') // Redirect ke halaman login jika tidak terautentikasi
-            }
-          }
-        } catch (error) {
-          router.push('/401')
-        }
-      }
-      fetchData()
-    }
+    } 
+    // else {
+    //   const fetchData = async () => {
+    //     try {
+    //       if (router.pathname !== '/auth/login' && router.pathname !== '/auth/register' && router.pathname !== '/401') {
+    //         await dispatch<any>(authVerifyToken())
+    //         if (
+    //           !isAuthenticated &&
+    //           router.pathname !== '/auth/login' &&
+    //           router.pathname !== '/auth/register' &&
+    //           router.pathname !== '/401'
+    //         ) {
+    //           router.push('/401') // Redirect ke halaman login jika tidak terautentikasi
+    //         }
+    //       }
+    //     } catch (error) {
+    //       router.push('/401')
+    //     }
+    //   }
+    //   fetchData()
+    // }
   }, [isAuthenticated, router, dispatch, cookies])
 
   return children

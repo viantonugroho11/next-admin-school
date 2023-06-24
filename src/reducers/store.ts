@@ -23,13 +23,15 @@ import thunk from 'redux-thunk';
 import { studentReducer } from './student';
 import { authReducer } from './auth';
 import { classReducer } from './class';
+import { majorReducer } from './major'
 
 // Gabungkan semua reducer
 const rootReducer = combineReducers({
   students: studentReducer,
   auth: authReducer,
+  majors: majorReducer,
   class: classReducer
-});
+})
 
 // Definisikan root state
 export type RootState = ReturnType<typeof rootReducer>;

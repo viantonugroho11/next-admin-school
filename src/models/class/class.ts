@@ -1,4 +1,3 @@
-
 export interface MClass {
   id: string
   name: string
@@ -14,4 +13,8 @@ export interface ClassResponse {
   data: MClass
 }
 
-
+export interface ClassRequest {
+  name: string
+  level: number
+  major: number
+}

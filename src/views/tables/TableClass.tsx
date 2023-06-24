@@ -7,22 +7,25 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import Button from '@mui/material/Button'
 import { useRouter } from 'next/router'
-
-const createData = (name: string, calories: number, fat: number, carbs: number, protein: number) => {
-  return { name, calories, fat, carbs, protein }
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9)
-]
+import { useSelector } from 'react-redux'
+import { RootState } from '@reducers/store'
+import { MClass } from '@models/class/class'
 
 const TableClass = () => {
 
-  const router = useRouter()
+   const classes = useSelector((state: RootState) => state.class.classes)
+   const router = useRouter()
+
+   const handleEdit = (id: string) => {
+     // router.push(`/class/edit/${id}`)
+   }
+
+   classes.forEach(item => {
+     console.log(item.name)
+   })
+   if (classes.length === 0) {
+     return <p>Kosong</p>
+   }
 
   return (
     <TableContainer component={Paper}>
@@ -36,9 +39,9 @@ const TableClass = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {classes.map((row: MClass) => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{
                 '&:last-of-type td, &:last-of-type th': {
                   border: 0
@@ -46,10 +49,10 @@ const TableClass = () => {
               }}
             >
               <TableCell component='th' scope='row'>
-                {row.name}
+                {row.id}
               </TableCell>
-              <TableCell align='right'>{row.calories}</TableCell>
-              <TableCell align='right'>{row.fat}</TableCell>
+              <TableCell align='right'>{row.name}</TableCell>
+              <TableCell align='right'>{row.major}</TableCell>
               <TableCell align='right'>
                 <Button variant='contained' color='primary' onClick={() => router.push('/class/edit/tes')}>
                   Click

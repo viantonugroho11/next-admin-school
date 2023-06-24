@@ -15,6 +15,8 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
+import { useSelector } from 'react-redux'
+import { RootState } from '@reducers/store'
 
 interface State {
   password: string
@@ -49,6 +51,13 @@ const FormLayoutsClass = () => {
 
   const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
+  }
+
+  const major = useSelector((state: RootState) => state.majors)
+
+
+  if (major.length === 0) {
+    return <MenuItem value=''>--Pilihan--</MenuItem>
   }
 
   return (
