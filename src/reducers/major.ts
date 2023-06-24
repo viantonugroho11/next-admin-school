@@ -1,6 +1,7 @@
 import { Major } from '@models/major/major'
-import { Reducer } from 'react'
+import { Reducer } from 'redux'
 
+// Definisikan tipe data untuk state
 interface MajorState {
   majors: Major[]
   loading: boolean
@@ -8,6 +9,7 @@ interface MajorState {
   major: Major
 }
 
+// Definisikan action types
 enum ActionType {
   FETCH_MAJORS_REQUEST = 'FETCH_MAJORS_REQUEST',
   FETCH_MAJORS_SUCCESS = 'FETCH_MAJORS_SUCCESS',
@@ -26,16 +28,16 @@ enum ActionType {
   DELETE_MAJOR_FAILURE = 'DELETE_MAJOR_FAILURE'
 }
 
-interface FetchMajorsRequestAction {
+interface FetchMajoresRequestAction {
   type: ActionType.FETCH_MAJORS_REQUEST
 }
 
-interface FetchMajorsSuccessAction {
+interface FetchMajoresSuccessAction {
   type: ActionType.FETCH_MAJORS_SUCCESS
   payload: Major[]
 }
 
-interface FetchMajorsFailureAction {
+interface FetchMajoresFailureAction {
   type: ActionType.FETCH_MAJORS_FAILURE
   payload: string
 }
@@ -97,9 +99,9 @@ interface DeleteMajorFailureAction {
 }
 
 type MajorAction =
-  | FetchMajorsRequestAction
-  | FetchMajorsSuccessAction
-  | FetchMajorsFailureAction
+  | FetchMajoresRequestAction
+  | FetchMajoresSuccessAction
+  | FetchMajoresFailureAction
   | FetchMajorRequestAction
   | FetchMajorSuccessAction
   | FetchMajorFailureAction
@@ -112,7 +114,7 @@ type MajorAction =
   | DeleteMajorRequestAction
   | DeleteMajorSuccessAction
   | DeleteMajorFailureAction
-
+// Inisialisasi state awal
 const initialState: MajorState = {
   majors: [],
   loading: false,
@@ -123,6 +125,7 @@ const initialState: MajorState = {
   }
 }
 
+// Definisikan reducer major
 const majorReducer: Reducer<MajorState, MajorAction> = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.FETCH_MAJORS_REQUEST:
@@ -146,7 +149,8 @@ const majorReducer: Reducer<MajorState, MajorAction> = (state = initialState, ac
     case ActionType.FETCH_MAJOR_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: null
       }
     case ActionType.FETCH_MAJOR_SUCCESS:
       return {
@@ -163,7 +167,8 @@ const majorReducer: Reducer<MajorState, MajorAction> = (state = initialState, ac
     case ActionType.POST_MAJOR_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: null
       }
     case ActionType.POST_MAJOR_SUCCESS:
       return {
@@ -180,12 +185,14 @@ const majorReducer: Reducer<MajorState, MajorAction> = (state = initialState, ac
     case ActionType.PUT_MAJOR_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: null
       }
     case ActionType.PUT_MAJOR_SUCCESS:
       return {
         ...state,
         loading: false,
+        majors: state.majors.map(c => (c.id === action.payload.id ? action.payload : c)),
         major: action.payload
       }
     case ActionType.PUT_MAJOR_FAILURE:
@@ -197,12 +204,14 @@ const majorReducer: Reducer<MajorState, MajorAction> = (state = initialState, ac
     case ActionType.DELETE_MAJOR_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: null
       }
     case ActionType.DELETE_MAJOR_SUCCESS:
       return {
         ...state,
         loading: false,
+        majors: state.majors.filter(c => c.id !== action.payload.id),
         major: action.payload
       }
     case ActionType.DELETE_MAJOR_FAILURE:
@@ -215,5 +224,4 @@ const majorReducer: Reducer<MajorState, MajorAction> = (state = initialState, ac
       return state
   }
 }
-
 export { majorReducer, ActionType }

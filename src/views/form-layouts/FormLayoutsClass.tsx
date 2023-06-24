@@ -17,6 +17,7 @@ import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { useSelector } from 'react-redux'
 import { RootState } from '@reducers/store'
+import { Major } from '@models/major/major'
 
 interface State {
   password: string
@@ -53,8 +54,7 @@ const FormLayoutsClass = () => {
     event.preventDefault()
   }
 
-  const major = useSelector((state: RootState) => state.majors)
-
+  const major = useSelector((state: RootState) => state.majors.majors)
 
   if (major.length === 0) {
     return <MenuItem value=''>--Pilihan--</MenuItem>
@@ -78,10 +78,9 @@ const FormLayoutsClass = () => {
                   id='form-layouts-separator-select'
                   labelId='form-layouts-separator-select-label'
                 >
-                  <MenuItem value='UK'>UK</MenuItem>
-                  <MenuItem value='USA'>USA</MenuItem>
-                  <MenuItem value='Australia'>Australia</MenuItem>
-                  <MenuItem value='Germany'>Germany</MenuItem>
+                  {major.map((row: Major) => (
+                    <MenuItem value={row.id}>{row.name}</MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </Grid>
