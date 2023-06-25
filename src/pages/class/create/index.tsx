@@ -14,6 +14,7 @@ import { useEffect } from 'react'
 import { fecthMajor } from '@actions/major/actions'
 
 const FormLayouts = () => {
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -27,8 +28,11 @@ const FormLayouts = () => {
     }
 
     fetchData()
+
   }, [dispatch])
+
   return (
+    
     <DatePickerWrapper>
       <Grid item spacing={6}>
         <Grid item xs={12} md={6}>
