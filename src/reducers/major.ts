@@ -120,7 +120,7 @@ const initialState: MajorState = {
   loading: false,
   error: null,
   major: {
-    id: '',
+    id: 0,
     name: ''
   }
 }

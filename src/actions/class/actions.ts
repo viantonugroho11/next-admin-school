@@ -1,4 +1,4 @@
-import { ClassesResponse } from "@models/class/class"
+import { ClassRequest, ClassesResponse } from "@models/class/class"
 import { ActionType } from "@reducers/class"
 import { apiGetWithoutToken, apiPostWithoutToken } from "@services/api"
 import { AxiosResponse } from "axios"
@@ -52,14 +52,14 @@ export const fetchClass = (id: string) => {
   }
 }
 
-export const postClass = (params: any) => {
+export const postClass = (params: ClassRequest) => {
   return async (dispatch: Dispatch<any>) => {
     dispatch({ type: ActionType.POST_CLASS_REQUEST })
 
     try {
       const response: AxiosResponse<ClassesResponse> = await apiPostWithoutToken(
         'https://go-management-auth-school-production.up.railway.app/v1/apiUser/class',
-        ''
+        params
       )
       const data = response.data.data
 
@@ -100,7 +100,7 @@ export const deleteClass = (id: string) => {
   }
 }
 
-export const putClass = (id: string, params: any) => {
+export const putClass = (id: string, params: ClassRequest) => {
   return async (dispatch: Dispatch<any>) => {
     dispatch({ type: ActionType.PUT_CLASS_REQUEST })
 

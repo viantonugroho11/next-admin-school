@@ -16,12 +16,12 @@ export const fecthMajor = () => {
       const data = response.data.data
 
       dispatch({
-        type: ActionType.FETCH_MAJOR_SUCCESS,
+        type: ActionType.FETCH_MAJORS_SUCCESS,
         payload: data
       })
     } catch (error) {
       dispatch({
-        type: ActionType.FETCH_MAJOR_FAILURE,
+        type: ActionType.FETCH_MAJORS_FAILURE,
         payload: 'Failed to fetch majors'
       })
     }

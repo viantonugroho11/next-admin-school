@@ -1,5 +1,5 @@
 export interface Major {
-  id: string
+  id: number
   name: string
 }
 

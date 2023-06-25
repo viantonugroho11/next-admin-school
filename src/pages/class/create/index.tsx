@@ -7,7 +7,6 @@ import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
 // ** Demo Components Imports
 import FormLayoutsClass from 'src/views/form-layouts/FormLayoutsClass'
 
-
 // ** Third Party Styles Imports
 import 'react-datepicker/dist/react-datepicker.css'
 import { useDispatch } from 'react-redux'
@@ -15,7 +14,6 @@ import { useEffect } from 'react'
 import { fecthMajor } from '@actions/major/actions'
 
 const FormLayouts = () => {
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -24,6 +22,7 @@ const FormLayouts = () => {
         dispatch<any>(fecthMajor())
       } catch (error) {
         // Tangani error jika diperlukan
+        console.log(error)
       }
     }
 

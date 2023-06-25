@@ -12,20 +12,19 @@ import { RootState } from '@reducers/store'
 import { MClass } from '@models/class/class'
 
 const TableClass = () => {
+  const classes = useSelector((state: RootState) => state.class.classes)
+  const router = useRouter()
 
-   const classes = useSelector((state: RootState) => state.class.classes)
-   const router = useRouter()
+  const handleEdit = (id: string) => {
+    // router.push(`/class/edit/${id}`)
+  }
 
-   const handleEdit = (id: string) => {
-     // router.push(`/class/edit/${id}`)
-   }
-
-   classes.forEach(item => {
-     console.log(item.name)
-   })
-   if (classes.length === 0) {
-     return <p>Kosong</p>
-   }
+  classes.forEach(item => {
+    console.log(item.name)
+  })
+  if (classes.length === 0) {
+    return <p>Kosong</p>
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -40,19 +39,12 @@ const TableClass = () => {
         </TableHead>
         <TableBody>
           {classes.map((row: MClass) => (
-            <TableRow
-              key={row.id}
-              sx={{
-                '&:last-of-type td, &:last-of-type th': {
-                  border: 0
-                }
-              }}
-            >
+            <TableRow key={row.id}>
               <TableCell component='th' scope='row'>
                 {row.id}
               </TableCell>
               <TableCell align='right'>{row.name}</TableCell>
-              <TableCell align='right'>{row.major}</TableCell>
+              <TableCell align='right'>00</TableCell>
               <TableCell align='right'>
                 <Button variant='contained' color='primary' onClick={() => router.push('/class/edit/tes')}>
                   Click
