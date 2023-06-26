@@ -10,6 +10,8 @@ import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { RootState } from '@reducers/store'
 import { MClass } from '@models/class/class'
+import CircularProgress from '@mui/material/CircularProgress'
+
 
 const TableClass = () => {
   const classes = useSelector((state: RootState) => state.class.classes)
@@ -23,7 +25,11 @@ const TableClass = () => {
     console.log(item.name)
   })
   if (classes.length === 0) {
-    return <p>Kosong</p>
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <CircularProgress />
+      </div>
+    )
   }
 
   return (
