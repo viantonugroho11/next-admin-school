@@ -22,24 +22,46 @@ import FormHelperText from '@mui/material/FormHelperText'
 import EyeOutline from 'mdi-material-ui/EyeOutline'
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
 
+// ** Third Party Styles Imports
+import  { Quill } from 'react-quill'
+import ReactQuill from 'src/@core/components/react-quill'
+
 interface State {
   password: string
   showPassword: boolean
+  editorContent: string
 }
+
+const toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'], // opsi gaya teks
+  ['link', 'image', 'video'], // opsi media
+  [{ list: 'ordered' }, { list: 'bullet' }], // opsi daftar
+  [{ indent: '-1' }, { indent: '+1' }], // opsi indentasi
+  [{ align: [] }], // opsi penjajaran
+  ['clean'] // opsi hapus format
+]
+
 
 const FormLayoutsBasic = () => {
   // ** States
   const [values, setValues] = useState<State>({
     password: '',
-    showPassword: false
+    showPassword: false,
+     editorContent: ''
   })
   const [confirmPassValues, setConfirmPassValues] = useState<State>({
     password: '',
-    showPassword: false
+    showPassword: false,
+    editorContent: ''
   })
 
   const handleChange = (prop: keyof State) => (event: ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: event.target.value })
+  }
+
+  const handleEditorChange = (content: string) => {
+    console.log(content)
+    setValues({ ...values, editorContent: content })
   }
 
   const handleConfirmPassChange = (prop: keyof State) => (event: ChangeEvent<HTMLInputElement>) => {
@@ -151,6 +173,14 @@ const FormLayoutsBasic = () => {
                   </Link>
                 </Box>
               </Box>
+            </Grid>
+            <Grid item xs={12}>
+              {/* Replace this TextField with the TextEditor */}
+              <ReactQuill
+                value={values.editorContent}
+                onChange={handleEditorChange}
+                modules={{ toolbar: toolbarOptions }}
+              />
             </Grid>
           </Grid>
         </form>
