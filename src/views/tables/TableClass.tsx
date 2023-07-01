@@ -12,13 +12,12 @@ import { RootState } from '@reducers/store'
 import { MClass } from '@models/class/class'
 import CircularProgress from '@mui/material/CircularProgress'
 
-
 const TableClass = () => {
   const classes = useSelector((state: RootState) => state.class.classes)
   const router = useRouter()
 
   const handleEdit = (id: string) => {
-    // router.push(`/class/edit/${id}`)
+    router.push(`/class/edit/${id}`)
   }
 
   classes.forEach(item => {
@@ -52,7 +51,7 @@ const TableClass = () => {
               <TableCell align='right'>{row.name}</TableCell>
               <TableCell align='right'>00</TableCell>
               <TableCell align='right'>
-                <Button variant='contained' color='primary' onClick={() => router.push('/class/edit/tes')}>
+                <Button variant='contained' color='primary' onClick={() => handleEdit(row.id)}>
                   Click
                 </Button>{' '}
                 {/* Tombol untuk Actions */}
