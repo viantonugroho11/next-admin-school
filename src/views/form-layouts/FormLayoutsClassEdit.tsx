@@ -16,18 +16,21 @@ import { MenuItem, Select, SelectChangeEvent } from '@mui/material'
 import { Major } from '@models/major/major'
 
 interface State {
+  id: number
   name: string
   major: number
 }
 
 const FormLayoutsClassEdit: React.FC = () => {
   const [values, setValues] = useState<State>({
+    id: 0,
     name: '',
     major: 0
   })
   const router = useRouter()
   const dispatch = useDispatch()
   const majors = useSelector((state: RootState) => state.majors.majors)
+
 
   const handleChange = (prop: keyof State) => (event: ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: event.target.value })

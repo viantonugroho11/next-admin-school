@@ -100,7 +100,7 @@ export const deleteClass = (id: string) => {
   }
 }
 
-export const putClass = (id: string, params: ClassRequest) => {
+export const updateClass = (id: string, params: ClassRequest) => {
   return async (dispatch: Dispatch<any>) => {
     dispatch({ type: ActionType.PUT_CLASS_REQUEST })
 
@@ -123,5 +123,5 @@ export const putClass = (id: string, params: ClassRequest) => {
     }
   }
 }
-  
+
 

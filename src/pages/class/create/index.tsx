@@ -32,11 +32,10 @@ const FormLayouts = () => {
   }, [dispatch])
 
   return (
-    
     <DatePickerWrapper>
       <Grid item spacing={6}>
         <Grid item xs={12} md={6}>
-          <FormLayoutsClass />
+          <FormLayoutsClass editMode={false} />
         </Grid>
       </Grid>
     </DatePickerWrapper>

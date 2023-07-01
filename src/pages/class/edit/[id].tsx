@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import { fetchClass } from '@actions/class/actions'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import FormLayoutsClassEdit from 'src/views/form-layouts/FormLayoutsClassEdit'
+import FormLayoutsClass from 'src/views/form-layouts/FormLayoutsClass'
 import { fecthMajor } from '@actions/major/actions'
 
 const FormLayouts = () => {
@@ -46,7 +46,7 @@ const FormLayouts = () => {
     <DatePickerWrapper>
       <Grid item spacing={6}>
         <Grid item xs={12} md={6}>
-          <FormLayoutsClassEdit />
+          <FormLayoutsClass editMode={true} />
         </Grid>
       </Grid>
     </DatePickerWrapper>
