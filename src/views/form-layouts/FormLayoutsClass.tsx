@@ -66,7 +66,7 @@ const FormLayoutsClass: React.FC<Props> = ({ editMode }) => {
         major: values.major
       }
 
-      if (editMode && selectedClass) {
+      if (editMode) {
         dispatch<any>(updateClass(idClass, params))
       } else {
         dispatch<any>(postClass(params))
