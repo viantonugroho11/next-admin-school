@@ -35,12 +35,10 @@ const FormLayoutsClass: React.FC<Props> = ({ editMode }) => {
   const dispatch = useDispatch()
   const majors = useSelector((state: RootState) => state.majors.majors)
   const selectedClass = useSelector((state: RootState) => state.class.class)
-  var idClass: string = ''
   useEffect(() => {
     if (editMode) {
-      idClass = router.query.id as string
       setValues({
-        id: idClass,
+        id: router.query.id as string,
         name: selectedClass.name,
         major: 0
       })
@@ -67,7 +65,7 @@ const FormLayoutsClass: React.FC<Props> = ({ editMode }) => {
       }
 
       if (editMode) {
-        dispatch<any>(updateClass(idClass, params))
+        dispatch<any>(updateClass(values.id, params))
       } else {
         dispatch<any>(postClass(params))
       }
