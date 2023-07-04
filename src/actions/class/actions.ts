@@ -107,7 +107,7 @@ export const updateClass = (id: string, params: ClassRequest) => {
     try {
       const response: AxiosResponse<ClassesResponse> = await apiPutWithoutToken(
         `https://go-management-auth-school-production.up.railway.app/v1/apiUser/class/${id}`,
-        ''
+        params
       )
       const data = response.data.data
 
