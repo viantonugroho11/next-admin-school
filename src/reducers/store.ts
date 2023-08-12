@@ -18,26 +18,31 @@
 
 // store.ts
 
-import { combineReducers, createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { studentReducer } from './student';
-import { authReducer } from './auth';
-import { classReducer } from './class';
+import { combineReducers, createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { studentReducer } from './student'
+import { authReducer } from './auth'
+import { classReducer } from './class'
 import { majorReducer } from './major'
+import { teacherReducer } from './teacher'
+import { courseReducer } from './course'
+import { taskReducer } from './task'
 
 // Gabungkan semua reducer
 const rootReducer = combineReducers({
   students: studentReducer,
   auth: authReducer,
   majors: majorReducer,
-  class: classReducer
+  class: classReducer,
+  teachers: teacherReducer,
+  coursers: courseReducer,
+  tasks: taskReducer
 })
 
 // Definisikan root state
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof rootReducer>
 
 // Buat store Redux
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
-export default store;
-
+export default store
