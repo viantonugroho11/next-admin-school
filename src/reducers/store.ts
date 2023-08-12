@@ -36,7 +36,8 @@ const rootReducer = combineReducers({
   class: classReducer,
   teachers: teacherReducer,
   coursers: courseReducer,
-  tasks: taskReducer
+  tasks: taskReducer,
+  materials: taskReducer
 })
 
 // Definisikan root state
