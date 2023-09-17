@@ -13,7 +13,7 @@ export const fetchStudents = () => {
 
     try {
       const response: AxiosResponse<StudentsResponse> = await apiGetWithoutToken(
-        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/student/all',
+        'https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiUser/student/all',
         ''
       )
       const data = response.data.data

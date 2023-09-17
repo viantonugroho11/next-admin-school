@@ -10,7 +10,7 @@ export const fetchClasses = () => {
 
     try {
       const response: AxiosResponse<ClassesResponse> = await apiGetWithoutToken(
-        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/class/all',
+        'https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiUser/class/all',
         ''
       )
       const data = response.data.data
@@ -34,7 +34,7 @@ export const fetchClass = (id: string) => {
 
     try {
       const response: AxiosResponse<ClassesResponse> = await apiGetWithoutToken(
-        `https://go-management-auth-school-production.up.railway.app/v1/apiUser/class/${id}`,
+        `https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiUser/class/${id}`,
         ''
       )
       const data = response.data.data
@@ -58,7 +58,7 @@ export const postClass = (params: ClassRequest) => {
 
     try {
       const response: AxiosResponse<ClassesResponse> = await apiPostWithoutToken(
-        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/class',
+        'https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiUser/class',
         params
       )
       const data = response.data.data
@@ -82,7 +82,7 @@ export const deleteClass = (id: string) => {
 
     try {
       const response: AxiosResponse<ClassesResponse> = await apiGetWithoutToken(
-        `https://go-management-auth-school-production.up.railway.app/v1/apiUser/class/${id}`,
+        `https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiUser/class/${id}`,
         ''
       )
       const data = response.data.data
@@ -106,7 +106,7 @@ export const updateClass = (id: string, params: ClassRequest) => {
 
     try {
       const response: AxiosResponse<ClassesResponse> = await apiPutWithoutToken(
-        `https://go-management-auth-school-production.up.railway.app/v1/apiUser/class/${id}`,
+        `https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiUser/class/${id}`,
         params
       )
       const data = response.data.data

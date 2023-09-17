@@ -10,7 +10,7 @@ export const fecthMajor = () => {
 
     try {
       const response: AxiosResponse<MajorsResponse> = await apiGetWithoutToken(
-        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/major/all',
+        'https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiUser/major/all',
         ''
       )
       const data = response.data.data
@@ -34,7 +34,7 @@ export const postMajor = (params: any) => {
 
     try {
       const response: AxiosResponse<MajorsResponse> = await apiGetWithoutToken(
-        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/major/all',
+        'https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiUser/major/all',
         ''
       )
       const data = response.data.data
@@ -59,7 +59,7 @@ export const putMajor = (params: any) => {
 
     try {
       const response: AxiosResponse<MajorsResponse> = await apiGetWithoutToken(
-        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/major/all',
+        'https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiUser/major/all',
         ''
       )
       const data = response.data.data
@@ -84,7 +84,7 @@ export const deleteMajor = (params: any) => {
 
     try {
       const response: AxiosResponse<MajorsResponse> = await apiGetWithoutToken(
-        'https://go-management-auth-school-production.up.railway.app/v1/apiUser/major/all',
+        'https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiUser/major/all',
         ''
       )
       const data = response.data.data

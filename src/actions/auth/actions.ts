@@ -15,7 +15,7 @@ export const authLoginPost = (params: LoginRequest) => {
 
     try {
       const response: AxiosResponse<AuthResponse> = await apiPostWithoutToken(
-        'https://go-management-auth-school-production.up.railway.app/v1/apiAuth/auth/login',
+        'https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiAuth/auth/login',
         params
       )
       const data = response.data.data
@@ -39,7 +39,7 @@ export const authVerifyToken = () => {
 
     try {
       const response: AxiosResponse<AuthResponse> = await apiGetWithToken(
-        'https://go-management-auth-school-production.up.railway.app/v1/apiAuth/auth/validate',
+        'https://7z35rw2w-1325.asse.devtunnels.ms/v1/apiAuth/auth/validate',
         ''
       )
       const data = response.data.data
