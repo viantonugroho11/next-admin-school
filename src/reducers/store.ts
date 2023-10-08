@@ -27,6 +27,7 @@ import { majorReducer } from './major'
 import { teacherReducer } from './teacher'
 import { courseReducer } from './course'
 import { taskReducer } from './task'
+import { scheduleReducer } from './schedule'
 
 // Gabungkan semua reducer
 const rootReducer = combineReducers({
@@ -37,7 +38,8 @@ const rootReducer = combineReducers({
   teachers: teacherReducer,
   coursers: courseReducer,
   tasks: taskReducer,
-  materials: taskReducer
+  materials: taskReducer,
+  schedules: scheduleReducer
 })
 
 // Definisikan root state

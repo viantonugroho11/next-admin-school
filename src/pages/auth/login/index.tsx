@@ -191,7 +191,7 @@ const LoginPage = () => {
               autoFocus
               fullWidth
               id='email-input'
-              label='Email'
+              label='Username'
               sx={{ marginBottom: 4 }}
               value={values.email}
               onChange={handleChange('email')}
