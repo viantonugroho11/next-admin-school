@@ -37,36 +37,35 @@ const navigation = (): VerticalNavItemsType => {
     {
       title: 'Class',
       icon: Login,
-      path: '/class',
+      path: '/class'
     },
     {
       title: 'Student',
       icon: Login,
-      path: '/student',
+      path: '/student'
     },
     {
       title: 'Teacher',
       icon: Login,
-      path: '/teacher',
+      path: '/teacher'
+    },
+    {
+      title: 'Course',
+      icon: Login,
+      path: '/course'
     },
     {
       sectionTitle: 'Management Learning'
     },
     {
-      title: 'Mata Pelajaran',
-      icon: Login,
-      path: '/pages/login',
-    },
-    {
       title: 'Ujian',
       icon: Login,
-      path: '/pages/login',
+      path: '/pages/login'
     },
     {
-      title: 'Login',
+      title: 'Schedule',
       icon: Login,
-      path: '/pages/login',
-      openInNewTab: true
+      path: '/course/schedule'
     },
     {
       sectionTitle: 'Profil'

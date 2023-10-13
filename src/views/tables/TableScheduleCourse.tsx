@@ -49,7 +49,7 @@ const TableScheduleCourse = () => {
                 {row.id}
               </TableCell>
               <TableCell align='right'>{row.class_id}</TableCell>
-              <TableCell align='right'>00</TableCell>
+              <TableCell align='right'>{row.major_id}</TableCell>
               <TableCell align='right'>
                 <Button variant='contained' color='primary' onClick={() => handleEdit(row.id)}>
                   Click
